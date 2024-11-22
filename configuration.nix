@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware.nix
       ./packages.nix
       ./services.nix
     ];
@@ -16,15 +16,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Networking
-  networking.hostName = "nixos"; # Define your hostname.
-
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.networkmanager.enable = true;
 
   #fonts.fontDir.enable = true;
 
@@ -55,10 +50,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  
   # Audio
   sound.enable = true;
   security.rtkit.enable = true;
