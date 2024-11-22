@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware.nix
+      ./hardware-configuration.nix
       ./packages.nix
       ./services.nix
     ];
@@ -52,7 +52,7 @@
   security.rtkit.enable = true;
   
   # Networking
-  networking.hostName = "lovemachine"; 
+  networking.hostName = "nixos"; 
   networking.networkmanager.enable = true;
 
   # Bluetooth
