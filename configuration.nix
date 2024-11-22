@@ -12,14 +12,9 @@
       ./services.nix
     ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #fonts.fontDir.enable = true;
 
@@ -39,8 +34,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User Account 
   users.users.ohf = {
     isNormalUser = true;
     description = "ohf";
@@ -50,9 +44,20 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Experimental
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Audio
   sound.enable = true;
   security.rtkit.enable = true;
+  
+  # Networking
+  networking.hostName = "lovemachine"; 
+  networking.networkmanager.enable = true;
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  system.stateVersion = "24.05"; 
 }
