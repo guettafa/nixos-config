@@ -3,7 +3,9 @@
   environment.systemPackages = with pkgs; [
     unzip
     chromium
+    emacs
     neofetch
+    ranger
     pipewire
     kitty
     wget
