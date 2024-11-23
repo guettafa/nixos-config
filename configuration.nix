@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -38,9 +38,10 @@
   users.users.ohf = {
     isNormalUser = true;
     description = "ohf";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
+ 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -58,6 +59,9 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  # Power
+  powerManagement.cpuFreqGovernor = "performance";
 
   system.stateVersion = "24.05"; 
 }

@@ -1,7 +1,6 @@
 { pkgs, ...}:
 {
   environment.systemPackages = with pkgs; [
-    vim
     unzip
     chromium
     neofetch
@@ -12,11 +11,13 @@
     htop
     gpicview
   ];
-  
+
   fonts.packages = with pkgs; [
     font-awesome
     iosevka
     nerdfonts
     terminus_font
   ];
+
+  programs.zsh.enable = true;
 }
